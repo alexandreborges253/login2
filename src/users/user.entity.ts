@@ -1,23 +1,27 @@
-
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Cliente {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({ type: 'varchar', length: 255 })
-  nome: string;
+  nome!: string;
 
   @Column({ type: 'varchar', length: 20 })
-  email: string;
+  email!: string;
 
   @Column({ type: 'varchar', length: 20 })
-  documento: string;
+  documento!: string;
 
   @CreateDateColumn({ name: 'data_cadastro' })
-  data_cadastro: Date;
+  data_cadastro!: Date;
 
   @Column({ default: false })
-  soft_delete: boolean;
+  soft_delete!: boolean;
 }
