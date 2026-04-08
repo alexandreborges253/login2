@@ -18,8 +18,9 @@ export class AdvogadosService {
     return this.advogadosRepo.findOneBy({ id });
   }
 
-  create(user: Advogado) {
+  create(user: Advogado, firebaseUid: string) {
     return this.advogadosRepo.save(user);
+    
   }
 
   update(id: number, user: Advogado) {

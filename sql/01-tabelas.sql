@@ -31,6 +31,7 @@ CREATE TABLE adv (
     plano_id INT,
     assinatura ENUM('ativo', 'pendente', 'cancelado') DEFAULT 'ativo',
     soft_delete BOOLEAN DEFAULT FALSE,
+    FIREBASE_UID VARCHAR(128),
     FOREIGN KEY (plano_id) REFERENCES plano(id)
 ) ENGINE=InnoDB;
 

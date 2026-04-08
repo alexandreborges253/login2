@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
 import { PlanosService } from './planos.service';
 import { Plano } from './planos.entity';
+import { FirebaseAuthGuard } from '../auth.guard';
 
 @Controller('planos')
+@UseGuards(FirebaseAuthGuard)
 export class PlanosController {
   constructor(private readonly planoService: PlanosService) {}
 

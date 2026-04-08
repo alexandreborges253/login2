@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
-//import { AdvogadosService } from '../advogados/advogados.service';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
 import { ClienteAdvogado } from '../cliente_advogado/cliente_advogado.entity'
 import { ClienteAdvogadoService } from './cliente_advogado.service';
+import { FirebaseAuthGuard } from '../auth.guard';
 
 @Controller('clienteadvogado')
+@UseGuards(FirebaseAuthGuard)
 export class ClienteAdvogadoController {
   constructor(private readonly ClienteAdvogadoService: ClienteAdvogadoService) {}
 

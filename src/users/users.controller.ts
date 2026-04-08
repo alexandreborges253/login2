@@ -6,11 +6,14 @@ import {
   Delete,
   Body,
   Param,
+  UseGuards
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { Cliente } from './user.entity';
+import { FirebaseAuthGuard } from '../auth.guard';
 
 @Controller('users')
+@UseGuards(FirebaseAuthGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

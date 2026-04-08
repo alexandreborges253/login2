@@ -3,6 +3,9 @@
 /node_modules
 /build
 
+# Bloquear o arquivo de credenciais do Firebase
+ponte-juridica-firebase-adminsdk-fbsvc-8598db6b2b.json
+
 # Logs
 logs
 *.log

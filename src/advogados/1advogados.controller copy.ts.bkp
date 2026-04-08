@@ -1,15 +1,16 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, Req } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
 import { AdvogadosService } from './advogados.service';
 import { Advogado } from './advogados.entity';
 import { FirebaseAuthGuard } from '../auth.guard';
 
 @Controller('advogados')
-@UseGuards(FirebaseAuthGuard) // 1. Protege todas as rotas abaixo
+@UseGuards(FirebaseAuthGuard)
+
 export class AdvogadosController {
   constructor(private readonly advogadosService: AdvogadosService) {}
 
   @Get()
-  // 2. Mantemos o findAll original, mas agora ele só executa se o Guard aprovar o Token
+  
   findAll() {
     return this.advogadosService.findAll();
   }
@@ -20,11 +21,8 @@ export class AdvogadosController {
   }
 
   @Post()
-  // 3. No Create, ainda é recomendado capturar o UID para saber quem cadastrou
-  create(@Body() user: Advogado, @Req() req: any) {
-    const firebaseUid = req.user.uid;
-    // Passamos o objeto e o UID para o service
-    return this.advogadosService.create(user, firebaseUid);
+  create(@Body() user: Advogado) {
+    return this.advogadosService.create(user);
   }
 
   @Put(':id')
